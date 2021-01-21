@@ -1,5 +1,12 @@
 import React from 'react';
+import NotesContainer from './containers/NotesContainer'
 
-export default () => {
-    return <h1>Widgets App</h1>
-};
+class App extends React.Component {
+    render () {
+
+        return (
+            <NotesContainer />
+        )
+    }
+}
+export default App
