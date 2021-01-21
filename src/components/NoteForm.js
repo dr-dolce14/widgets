@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { addNote } from '../redux/actions'
 
 class NoteForm extends React.Component {
     state = {
@@ -30,7 +31,7 @@ class NoteForm extends React.Component {
 // write action (write to the store)
 const mapDispatchToProps = (dispatch) => {
     //dispatch: to take in an action adn then call our reducer and pass that action into the reducer
-    return {submitHandler: (noteObj) => dispatch({ type: "add note", payload: noteObj})}
+    return {submitHandler: (noteObj) => dispatch(addNote(noteObj))}
 }
 
 export default connect(null, mapDispatchToProps)(NoteForm)

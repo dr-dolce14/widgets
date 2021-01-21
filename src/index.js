@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+
+
 
 
 const rootReducer = (currentState = {notes: [] }, action) => {
@@ -11,13 +14,14 @@ const rootReducer = (currentState = {notes: [] }, action) => {
         console.log("reducer action: ", action)
         return {...currentState, notes: [...currentState.notes, action.payload]}
 
+    } else if (action.type === "add_notes_from_fetch") {
+        return {...currentState, notes: action.payload}
     } else {
-
-    }
     return currentState // do not want a spread operator here because if you return a copy of state, that is a new action and would trigger a re-rendering of components
+    }
 }
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 console.log("Store: ", store)
 
