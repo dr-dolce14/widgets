@@ -13,7 +13,7 @@ class NotesContainer extends React.Component {
     // }
 
     renderNotes = () => {
-        return this.state.notes.map((note) => <Note key={note.id} note={note} />)
+        return this.props.notes.map((note) => <Note key={note.id} note={note} />)
     }
 
     render () {
@@ -21,13 +21,14 @@ class NotesContainer extends React.Component {
 
         return (
            <ul>
-               {/* {this.renderNotes()} */}
+               {this.renderNotes()}
            </ul>
         )
     }
 
 }
 
+//read action
 const mapStateToProps = (state) => {
     console.log("Current Redux State: ", state)
     return {notes: state.notes}
