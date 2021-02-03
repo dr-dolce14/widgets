@@ -1,25 +1,26 @@
 import React, { useState } from 'react'
 
-const Accordion = ({ items }) => {
+const Accordion = ({ dogBreeds }) => {
     const [activeIndex, setActiveIndex] = useState(null)
+
 
     const onTitleClick = (index) => {
         setActiveIndex(index)
     }
 
 
-    const renderedItems = items.map((item, index) => {
+    const renderedItems = dogBreeds.map((breed, index) => {
         const active = index === activeIndex ? 'active' : '';
-        return <React.Fragment key={item.title}>
+        return <React.Fragment key={breed.name}>
             <div 
                 className={`title ${active}`}
                 onClick={() => onTitleClick(index)}
             >
                 <i className="dropdown icon"></i>
-                {item.title}
+                {breed.name}
             </div>
             <div className={`content ${active}`}>
-                <p>{item.content}</p>
+                <p>{breed.description}</p>
             </div>
         </React.Fragment>
     })
@@ -30,3 +31,6 @@ const Accordion = ({ items }) => {
 }
 
 export default Accordion
+
+
+
