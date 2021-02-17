@@ -20,9 +20,21 @@ const SearchWidget = () => {
             });
             setResults(data.query.search);
         };
+        if (term && !results.length) {
         search();
-    }, [term]); // this means that when our component renders for the first time AND when it rerenders with the 'term' piece of state having changed, the arrow function within useEffect will run.
-
+        } else {
+            const timeoutId = setTimeout(() => {
+                if (term) {
+                    search();
+                }
+            }, 1000);
+            
+            return () => {
+                clearTimeout(timeoutId);
+            };
+        }
+    }, [term]); 
+    
     const renderedResults = results.map((result) => {
         return (
         <div key={result.pageid} className='item'>
