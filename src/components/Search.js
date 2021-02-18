@@ -33,7 +33,7 @@ const Search = () => {
             });
             setResults(data.query.search);
         };
-        if (term) {
+        if (debouncedTerm) {
             search();
         }
     }, [debouncedTerm])
