@@ -3,7 +3,7 @@ import Accordion from './components/Accordion'
 import Search from './components/Search'
 import Dropdown from './components/Dropdown'
 import Dogs from './components/Dogs'
-import SearchWidget from './components/SearchWidget'
+
 
 const items = [
     {
@@ -55,12 +55,11 @@ const App = () => {
 
     return (
     <div>
-        {/* <Dropdown 
+        <Dropdown 
           selected={selected} 
           onSelectedChange={setSelected}
           options={options}
-          /> */}
-          <Search />
+          />
     </div>
     )
 }
