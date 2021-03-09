@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ label, options, selected, onSelectedChange }) => {
     const [open, setOpen] = useState(false);
     const ref = useRef()
 
     useEffect(() => {
         document.body.addEventListener('click', (event) => {
-            if (ref.current && ref.current.contains(event.target)) {
+            if (ref.current && ref.current.contains(event.target)) { //could also use a cleanup function to separate this out (check lecture 187)
             return;
         }
         setOpen(false)
@@ -34,7 +34,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
         <div>
         <div ref={ref} className="ui form">
             <div className="field">
-                <label className="label">Select an Option</label>
+                <label className="label">{label}</label>
                 <div 
                   onClick={() => setOpen(!open)} //when the div is clicked, toggle between true and false
                   className={`ui selection dropdown ${open ? 'visible active' : ''}`} //when the menu is set to true, the term "visible active" is added and the menu is open to see the list
@@ -48,7 +48,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
                 </div>
             </div>
         </div>
-        <h1 style={{color: `${selected.value}`}}>This text is {selected.value}</h1>
+        {/* <h1 style={{color: `${selected.value}`}}>This text is {selected.value}</h1> */}
         </div>
     )
 };
